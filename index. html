@@ -2,117 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Happy Propose Day Sharmila</title>
+    <title>Happy Propose Day</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff5f6d, #ffc371);
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #ffb6c1, #ffe4e1);
-            text-align: center;
-            color: #880e4f;
-            height: 100vh;
-            overflow: hidden;
         }
 
         .container {
-            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 380px;
+            text-align: center;
+            color: white;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
         }
 
         h1 {
-            font-size: 40px;
-        }
-
-        h2 {
             font-size: 26px;
+            margin: 10px 0;
         }
 
-        .heart {
-            font-size: 80px;
-            animation: beat 1s infinite;
-        }
-
-        @keyframes beat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .message {
-            font-size: 18px;
-            margin: 25px auto;
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
-        .buttons {
-            margin-top: 30px;
-            position: relative;
-            height: 200px;
-        }
-
-        button {
-            padding: 12px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-        }
-
-        #yesBtn {
-            background-color: #d81b60;
-            color: white;
-        }
-
-        #noBtn {
-            background-color: #757575;
-            color: white;
-            position: absolute;
-        }
-
-        #result {
-            margin-top: 30px;
-            font-size: 28px;
-            color: #c2185b;
-            font-weight: bold;
+        p {
+            font-size: 17px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="heart">❤️</div>
-    <h1>Happy Propose Day</h1>
-    <h2>Dear Sharmila</h2>
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
-    <div class="message">
-        You make my days brighter and my smiles real.  
-        On this Propose Day, I just want to ask one simple question 💖
+    <div class="container">
+        <img src="proposal.png" alt="Proposal Image">
+
+        <h1>Happy Propose Day ❤️</h1>
+
+        <p>
+            From the first moment I saw you,<br>
+            my heart chose you forever.
+        </p>
     </div>
-
-    <h2>Will you be my special one?</h2>
-
-    <div class="buttons">
-        <button id="yesBtn" onclick="sayYes()">YES</button>
-        <button id="noBtn" onmouseover="moveNo()">NO</button>
-    </div>
-
-    <div id="result"></div>
-</div>
-
-<script>
-    function sayYes() {
-        document.getElementById("result").innerHTML = "I love you too ❤️";
-    }
-
-    function moveNo() {
-        const noBtn = document.getElementById("noBtn");
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 100);
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
-    }
-</script>
 
 </body>
 </html>
