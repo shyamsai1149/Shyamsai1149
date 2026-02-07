@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Happy Propose Day</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -17,7 +16,7 @@
             font-family: Arial, sans-serif;
         }
 
-        .container {
+        .card {
             background: rgba(0, 0, 0, 0.35);
             padding: 25px;
             border-radius: 20px;
@@ -42,24 +41,56 @@
             font-size: 17px;
             line-height: 1.5;
         }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        .no {
+            background-color: #ddd;
+            color: black;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Background Music -->
-    <audio autoplay loop>
+    <!-- 🎵 Background Music -->
+    <audio controls autoplay loop>
         <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support audio.
     </audio>
 
-    <div class="container">
+    <div class="card">
+        <!-- 🖼️ Proposal Image -->
         <img src="proposal.png" alt="Proposal Image">
 
         <h1>Happy Propose Day ❤️</h1>
 
         <p>
+            Dear <strong>Sharmila</strong>,<br>
             From the first moment I saw you,<br>
             my heart chose you forever.
         </p>
+
+        <!-- ✅ Yes / No buttons -->
+        <div class="buttons">
+            <button class="yes" onclick="alert('She said YES ❤️')">Yes</button>
+            <button class="no" onclick="alert('Please think again 💔')">No</button>
+        </div>
     </div>
 
 </body>
