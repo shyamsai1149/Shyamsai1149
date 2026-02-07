@@ -1,103 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Happy Propose Day</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Happy Propose Day</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #ff5f6d, #ffc371);
-            font-family: Arial, sans-serif;
-        }
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff5f6d, #ffc371);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
 
-        .card {
-            background: rgba(0, 0, 0, 0.35);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            max-width: 380px;
-            text-align: center;
-            color: white;
-        }
+.card {
+    background: rgba(0,0,0,0.35);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    max-width: 380px;
+    position: relative;
+    z-index: 10;
+}
 
-        img {
-            width: 100%;
-            border-radius: 15px;
-            margin-bottom: 15px;
-        }
+h1 { margin-bottom: 10px; }
 
-        h1 {
-            font-size: 26px;
-            margin: 10px 0;
-        }
+p { font-size: 17px; line-height: 1.5; }
 
-        p {
-            font-size: 17px;
-            line-height: 1.5;
-        }
+.buttons { margin-top: 15px; }
 
-        .buttons {
-            margin-top: 15px;
-        }
+button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
 
-        button {
-            padding: 10px 22px;
-            margin: 5px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.yes { background: #ff4d6d; color: white; }
+.no { background: #ddd; color: black; }
 
-        .yes {
-            background-color: #ff4d6d;
-            color: white;
-        }
+.hidden { display: none; }
 
-        .no {
-            background-color: #ddd;
-            color: black;
-        }
-    </style>
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+/* Balloons */
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    width: 40px;
+    height: 55px;
+    background: red;
+    border-radius: 50%;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120vh); }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- 🎵 Hidden Background Music -->
-    <audio id="bgMusic" autoplay loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
+<audio autoplay loop>
+    <source src="Music.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="card">
-        <!-- 🖼️ Proposal Image -->
-        <img src="proposal.png" alt="Proposal Image">
+<div class="card">
+    <h1>Happy Propose Day ❤️</h1>
 
-        <h1>Happy Propose Day ❤️</h1>
+    <p>
+        Dear <strong>Sharmila</strong>,<br>
+        From the first moment I saw you,<br>
+        my heart chose you forever.
+    </p>
 
-        <p>
-            Dear <strong>Sharmila</strong>,<br>
-            From the first moment I saw you,<br>
-            my heart chose you forever.
-        </p>
-
-        <div class="buttons">
-            <button class="yes" onclick="alert('She said YES ❤️')">Yes</button>
-            <button class="no" onclick="alert('Please think again 💔')">No</button>
-        </div>
+    <div class="buttons" id="choiceButtons">
+        <button class="yes" onclick="acceptProposal()">Yes</button>
+        <button class="no" onclick="escapeNo()">No</button>
     </div>
 
-    <!-- 🎯 Mobile autoplay fix -->
-    <script>
-        document.addEventListener("click", function () {
-            const music = document.getElementById("bgMusic");
-            music.play();
-        }, { once: true });
-    </script>
+    <p id="thankYou" class="hidden">
+        💖 Thank you for accepting my proposal 💖
+    </p>
+
+    <button id="giftBtn" class="hidden" onclick="showGift()">🎁 Gift</button>
+
+    <img id="giftImage" src="Proposal.png" class="hidden" alt="Gift Image">
+</div>
+
+<script>
+function escapeNo() {
+    const noBtn = document.querySelector('.no');
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = Math.random() * 250 + 'px';
+    noBtn.style.top = Math.random() * 250 + 'px';
+}
+
+function acceptProposal() {
+    document.getElementById('choiceButtons').classList.add('hidden');
+    document.getElementById('thankYou').classList.remove('hidden');
+    document.getElementById('giftBtn').classList.remove('hidden');
+    createBalloons();
+}
+
+function showGift() {
+    document.getElementById('giftImage').classList.remove('hidden');
+}
+
+function createBalloons() {
+    for (let i = 0; i < 20; i++) {
+        const b = document.createElement('div');
+        b.className = 'balloon';
+        b.style.left = Math.random() * 100 + 'vw';
+        b.style.background = `hsl(${Math.random()*360},70%,60%)`;
+        document.body.appendChild(b);
+        setTimeout(() => b.remove(), 6000);
+    }
+}
+</script>
 
 </body>
 </html>
